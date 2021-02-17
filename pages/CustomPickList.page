@@ -4,13 +4,17 @@
             <apex:selectList value="{!StateValue}" size="1">
                 <apex:selectOptions value="{!StateList}"/>
             </apex:selectList> 
-            <!-- <apex:commandButton value='Go' action="{!go}"/> -->
+            <apex:pageblocksection>
+                <apex:commandButton value='Go' action="{!go}"/>
+            </apex:pageblocksection>
         </apex:pageblock>
         <apex:pageblock title="Cities">
             <apex:selectList value="{!CityValue}" size="1">
-                <apex:selectOptions value="{!CityList}"/>
+                <apex:selectOptions value="{!CityList}" />
             </apex:selectList> 
-            <apex:commandButton value='Go' action="{!go}"/>
+            <apex:pageblocksection>
+                <apex:commandButton value='Set' action="{!SetValue}"/>
+            </apex:pageblocksection>
         </apex:pageblock>
     </apex:form>
 </apex:page>
