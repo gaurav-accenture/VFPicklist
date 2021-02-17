@@ -1,3 +1,9 @@
-<apex:page >
-    
+<apex:page controller = CustomPickListController>
+    <apex:form>
+        <apex:pageblock title="States">
+            <apex:selectList >
+                <apex:selectOptions value="{!getStateList}">
+            </apex:selectList> 
+        </apex:pageblock>
+    <apex:form>
 </apex:page>
