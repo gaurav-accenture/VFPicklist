@@ -5,5 +5,7 @@ public class CustomPickListController {
        statelist.add('Karnataka');
        statelist.add('Tamilnadu');
        statelist.add('Gujrat');
+
+       return statelist;
     }
 }

@@ -1,4 +1,4 @@
-<apex:page controller = CustomPickListController>
+<apex:page controller = "CustomPickListController">
     <apex:form>
         <apex:pageblock title="States">
             <apex:selectList >
