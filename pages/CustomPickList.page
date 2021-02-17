@@ -10,7 +10,7 @@
             <apex:selectList value="{!CityValue}" size="1">
                 <apex:selectOptions value="{!CityList}"/>
             </apex:selectList> 
-            <!-- <apex:commandButton value='Go' action="{!go}"/> -->
+            <apex:commandButton value='Go' action="{!go}"/>
         </apex:pageblock>
     </apex:form>
 </apex:page>

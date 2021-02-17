@@ -10,7 +10,7 @@ public class CustomPickListController {
        return StateList;
     }
 
-    public List<SelectOption> getCityValue(){
+    public List<SelectOption> getCityList(){
         List<SelectOption> CityList = new List<SelectOption>();
         if(StateValue == 'Maharashtra'){
             CityList.add(new SelectOption('Pune', 'Pune'));
