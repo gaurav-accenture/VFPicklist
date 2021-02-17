@@ -1,7 +1,7 @@
 <apex:page controller = "CustomPickListController">
     <apex:form>
         <apex:pageblock title="States">
-            <apex:selectList value="{!StateValue}">
+            <apex:selectList value="{!StateValue}", size="1">
                 <apex:selectOptions value="{!StateList}"/>
             </apex:selectList> 
             <apex:commandButton value='Go' action="{!go}"/>
