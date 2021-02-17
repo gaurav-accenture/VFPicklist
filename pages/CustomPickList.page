@@ -5,5 +5,5 @@
                 <apex:selectOptions value="{!getStateList}"/>
             </apex:selectList> 
         </apex:pageblock>
-    <apex:form>
+    </apex:form>
 </apex:page>

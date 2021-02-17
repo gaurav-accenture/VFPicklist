@@ -1,6 +1,6 @@
 public class CustomPickListController {
-    public List<SelectOption> getStateList() {
-       List<SelectOption> statelist = new List<SelectOption>();
+    public List<selectOption> getStateList() {
+       List<selectOption> statelist = new List<selectOption>();
        statelist.add('Maharashtra');
        statelist.add('Karnataka');
        statelist.add('Tamilnadu');
