@@ -37,7 +37,7 @@ public class CustomPickListController {
     }
 
     public void SetValue(){
-        System.debug('State: 'StateValue + '--------------------- City: ' + CityValue);
+        System.debug('State: '+StateValue + '--------------------- City: ' + CityValue);
     }
 
     public void go(){
