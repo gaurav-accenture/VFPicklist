@@ -2,7 +2,7 @@
     <apex:form>
         <apex:pageblock title="States">
             <apex:selectList >
-                <apex:selectOptions value="{!getStateList}">
+                <apex:selectOptions value="{!getStateList}"/>
             </apex:selectList> 
         </apex:pageblock>
     <apex:form>
