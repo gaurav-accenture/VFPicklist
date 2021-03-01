@@ -4,7 +4,7 @@ public class CustomPickListController {
     public List<SelectOption> getStateList() {
        List<SelectOption> StateList = new List<SelectOption>();
        statelist.add(new SelectOption('--NOT SELECTED--', ''));
-       for(States__mdt s: [SElECT masterlabel, developername from state__mdt]) {
+       for(State__mdt s: [SElECT masterlabel, developername from state__mdt]) {
            StateList.add(new SelectOption(s.masterlabel, s.developername));
        }
 
