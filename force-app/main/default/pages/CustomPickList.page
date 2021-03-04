@@ -3,13 +3,11 @@
         <apex:pageblock title="States">
             <apex:selectList value="{!StateValue}" size="1">
                 <apex:selectOptions value="{!StateList}"/>
+                <apex:actionSupport event="onchange" reRender="cities"/>
             </apex:selectList> 
-            <apex:pageblocksection >
-                <apex:commandButton value="Go" action="{!go}"/>
-            </apex:pageblocksection>
         </apex:pageblock>
         <apex:pageblock title="Cities">
-            <apex:selectList value="{!CityValue}" size="1">
+            <apex:selectList value="{!CityValue}" size="1" id = "cities">
                 <apex:selectOptions value="{!CityList}" />
             </apex:selectList> 
             <apex:pageblocksection >
@@ -17,4 +15,7 @@
             </apex:pageblocksection>
         </apex:pageblock>
     </apex:form>
+    <apex:pageBlock title="Confirmation">
+        <apex:pageMessages></apex:pageMessages>
+    </apex:pageBlock>
 </apex:page>

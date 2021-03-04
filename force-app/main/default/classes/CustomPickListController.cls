@@ -7,9 +7,11 @@ public class CustomPickListController {
         SCMap = new Map<String, List<SelectOption>>();
         for(States__c s: [SELECT name, cities__c from states__c]){
             List<SelectOption> cities = new List<SelectOption>();
+            cities.add(new SelectOption('', '--NOT SELECTED--'));
             for(String city : s.cities__c.split('\r\n')){
                 cities.add(new SelectOption(city,city)); 
             }
+            SCMap.put(s.name, cities);
         }
     }
 
@@ -28,10 +30,12 @@ public class CustomPickListController {
     }
 
     public void SetValue(){
-        System.debug('State: '+StateValue + '--------------------- City: ' + CityValue);
+        if(statevalue != null && CityValue != null){
+            System.debug('State: '+StateValue + '--------------------- City: ' + CityValue);
+            ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.CONFIRM, 'State: '+statevalue+' City: '+CityValue));
+        }else {
+            ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR,'Please Select Appropriate State and City.'));
+        }
     }
 
-    public void go(){
-        System.debug('Statevalue--------------------O'+StateValue);
-    }
 }
