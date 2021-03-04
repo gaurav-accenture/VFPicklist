@@ -9,9 +9,8 @@
         <name>ApexPage</name>
     </types>
     <types>
-        <members>Districts__mdt</members>
-        <members>State__mdt</members>
-        <name>Custom​Metadata</name>
+        <members>States__c</members>
+        <name>CustomObject</name>
     </types>
     <version>50.0</version>
 </Package>

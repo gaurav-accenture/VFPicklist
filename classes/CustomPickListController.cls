@@ -1,51 +1,41 @@
 public class CustomPickListController {
     public String StateValue{get; set;}
     public String CityValue{get; set;}
+    public Map<String, List<SelectOption>> SCMap {get; set;}
+
+    public CustomPickListController(){
+        SCMap = new Map<String, List<SelectOption>>();
+        for(States__c s: [SELECT name, cities__c from states__c]){
+            List<SelectOption> cities = new List<SelectOption>();
+            cities.add(new SelectOption('', '--NOT SELECTED--'));
+            for(String city : s.cities__c.split('\r\n')){
+                cities.add(new SelectOption(city,city)); 
+            }
+            SCMap.put(s.name, cities);
+        }
+    }
+
     public List<SelectOption> getStateList() {
        List<SelectOption> StateList = new List<SelectOption>();
-       statelist.add(new SelectOption('--NOT SELECTED--', ''));
-       for(State__mdt s: [SElECT masterlabel, developername from state__mdt]) {
-           StateList.add(new SelectOption(s.masterlabel, s.developername));
+       statelist.add(new SelectOption('', '--NOT SELECTED--'));
+       for(String s : SCMap.keySet()){
+           statelist.add(new SelectOption(s, s));
        }
-
-    //    statelist.add(new SelectOption('Maharashtra', 'Maharashtra'));
-    //    statelist.add(new SelectOption('Karnataka','Karnataka'));
-    //    statelist.add(new SelectOption('Tamilnadu','Tamilnadu'));
-    //    statelist.add(new SelectOption('Gujrat','Gujrat'));
        return StateList;
     }
 
     public List<SelectOption> getCityList(){
-        List<SelectOption> CityList = new List<SelectOption>();
-        if(StateValue == 'Maharashtra'){
-            CityList.add(new SelectOption('Pune', 'Pune'));
-            CityList.add(new SelectOption('Mumbai', 'Mumbai'));
-            CityList.add(new SelectOption('Thane', 'Thane'));
-            CityList.add(new SelectOption('Nashik', 'Nashik'));
-        } else if(StateValue == 'Karnataka'){
-            CityList.add(new SelectOption('Bengaluru', 'Bengaluru'));
-            CityList.add(new SelectOption('Mangaluru', 'Mangaluru'));
-            CityList.add(new SelectOption('Hubli', 'Hubli'));
-            CityList.add(new SelectOption('Gulbarga', 'Gulbarga'));
-        } else if(StateValue == 'Tamilnadu'){
-            CityList.add(new SelectOption('Chennai', 'Chennai'));
-            CityList.add(new SelectOption('Koimbatore', 'Koimbatore'));
-            CityList.add(new SelectOption('Madurai', 'Madurai'));
-            CityList.add(new SelectOption('Salem', 'Salem'));
-        } else if(StateValue == 'Gujrat'){
-            CityList.add(new SelectOption('Ahmedabad', 'Ahmedabad'));
-            CityList.add(new SelectOption('Surat', 'Surat'));
-            CityList.add(new SelectOption('Vadodara', 'Vadodara'));
-            CityList.add(new SelectOption('Rajkot', 'Rajkot'));
-        }
+        List<SelectOption> CityList = SCMap.get(StateValue);
         return CityList;
     }
 
     public void SetValue(){
-        System.debug('State: '+StateValue + '--------------------- City: ' + CityValue);
+        if(statevalue != null && CityValue != null){
+            System.debug('State: '+StateValue + '--------------------- City: ' + CityValue);
+            ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.CONFIRM, 'State: '+statevalue+' City: '+CityValue));
+        }else {
+            ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR,'Please Select Appropriate State and City.'));
+        }
     }
 
-    public void go(){
-        System.debug('Statevalue--------------------O'+StateValue);
-    }
 }
